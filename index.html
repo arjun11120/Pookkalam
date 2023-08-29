@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+    <div class="position-relative">
+        <div class="d-flex col-12 m-4 justify-content-center mainframe">
+          <div class="layer1  d-flex justify-content-center mt-4 color-primary">
+
+              <div class="layer2 m-5 color-secondary">
+                
+                <canvas id="myCanvas"></canvas>
+                  <div class="layer-2-sub1 color-white"></div>
+              </div>
+              <div class="layer3 m-5 color-secondary">
+                  <div class="layer-2-sub1 color-white"></div>
+                  <div class="layer-2-sub2 color-white"></div>
+              </div>
+              <div class="layer4 m-5">
+                  <div class="reuleaux1 reuleaux layer4-sub1"></div>
+                  <div class="reuleaux2 reuleaux layer4-sub2"></div>
+                  <div class="reuleaux3 reuleaux layer4-sub3"></div>
+                  <div class="reuleaux4 reuleaux layer4-sub4"></div>
+                  <div class="reuleaux5 reuleaux layer4-sub5"></div>
+                  <div class="reuleaux6 reuleaux layer4-sub6"></div>
+                  <div class="reuleaux7 reuleaux layer4-sub7"></div>
+                  <div class="reuleaux8 reuleaux layer4-sub7"></div>
+              </div>
+              <div class="layer5">
+                <div class="layer5-sub1">
+                    <div class="layer5-sub2">
+                        <div class="layer5-sub3"></div>
+                    </div>
+                </div>
+              </div>
+          </div>  
+      </div> 
+    </div>
+    <div class="d-flex justify-content-center">
+        <h1>ഓണാശംസകൾ</h1>
+    </div> 
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const context = canvas.getContext("2d");
+
+    const radius = 250;
+    const numDiamonds = 8;
+    const diamondSize = 10;
+    const diamondSpacing = 10;
+
+    canvas.width = canvas.height = radius * 2;
+
+    for (let i = 0; i < numDiamonds; i++) {
+      const angle = (i / numDiamonds) * Math.PI * 2;
+      const x = radius + Math.cos(angle) * (radius - diamondSize - diamondSpacing);
+      const y = radius + Math.sin(angle) * (radius - diamondSize - diamondSpacing);
+
+      context.fillStyle = "#f39c12";
+      context.save();
+      context.translate(x, y);
+      context.rotate(Math.PI / 4);
+      context.fillRect(-diamondSize / 2, -diamondSize / 2, diamondSize, diamondSize);
+      context.restore();
+    }
+  </script>
+</body>
+</html>
